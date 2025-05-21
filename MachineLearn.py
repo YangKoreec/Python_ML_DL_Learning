@@ -3,13 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def normalization(string : str) -> list:
-    return list(string.lstrip('[').rstrip(']').replace("'", "").split(', '))
+my_stat = pd.read_csv('https://stepik.org/media/attachments/course/4852/my_stat.csv')
 
-data = pd.read_csv('https://stepik.org/media/attachments/course/4852/dota_hero_stats.csv')
-data['new_roles'] = [normalization(string) for string in data.loc[:, 'roles'].values]
-data = data.drop('roles', axis=1)
-roles_set = set()
-for i in data.loc[:, 'new_roles'].values:
-    roles_set |= set(i)
-
+subset_1 = my_stat.iloc[0:10, [0, 2]]
+subset_2 = my_stat.iloc[:, [1, 3]].drop([0, 4], axis=0)
+print(subset_2)
