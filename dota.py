@@ -21,7 +21,7 @@ for i in data.loc[:, 'new_roles'].values:
             plot_data_dict[j] += 1
 
 plot_data = pd.DataFrame({'roles': plot_data_dict.keys(), 'counts': plot_data_dict.values()}, index=range(len(plot_data_dict)))
-ax = sns.histplot(plot_data, x='roles', weights='counts')
-ax.bar_label(ax.containers[0])
+print(plot_data)
+plt.bar_label(sns.histplot(plot_data, x='roles', weights='counts').containers[0])
 plt.tight_layout()
 plt.show()
